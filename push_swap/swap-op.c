@@ -1,7 +1,9 @@
 #include "push_swap.h"
 // Swap the first two elements of stack A
-void sa(t_stack **stack_a)
+void sa(t_stack **stack_a, int i)
 {
+    if (i == 0);
+        write(1, "sa\n", 3);
     t_node *first, *second;
     if (!(*stack_a)->top || !(*stack_a)->top->next)
         return;
@@ -13,8 +15,10 @@ void sa(t_stack **stack_a)
 }
 
 // Swap the first two elements of stack B
-void sb(t_stack **stack_b)
+void sb(t_stack **stack_b, int i)
 {
+    if (i == 0)
+        write(1, "sb\n", 3);
     t_node *first, *second;
     if (!(*stack_b)->top || !(*stack_b)->top->next)
         return;
@@ -28,13 +32,15 @@ void sb(t_stack **stack_b)
 // Swap the first two elements of both stacks A and B
 void ss(t_stack **stack_a, t_stack **stack_b)
 {
-    sa(stack_a);
-    sb(stack_b);
+    write(1, "ss\n", 3);
+    sa(stack_a, 1);
+    sb(stack_b, 1);
 }
 
 // Push the first element of stack A onto stack B
 void pb(t_stack **stack_a, t_stack **stack_b)
 {
+    write(1, "pb\n", 3);
     t_node *temp;
     if (!(*stack_a)->top)
         return;
@@ -47,6 +53,7 @@ void pb(t_stack **stack_a, t_stack **stack_b)
 // Push the first element of stack B onto stack A
 void pa(t_stack **stack_a, t_stack **stack_b)
 {
+    write(1, "pa\n", 3);
     t_node *temp;
     if (!(*stack_b)->top)
         return;
@@ -57,8 +64,10 @@ void pa(t_stack **stack_a, t_stack **stack_b)
 }
 
 // Rotate stack A (first element becomes last)
-void ra(t_stack **stack_a)
+void ra(t_stack **stack_a, int i)
 {
+    if (i == 0)
+        write(1, "ra\n", 3);
     t_node *temp, *last;
     if (!(*stack_a)->top || !(*stack_a)->top->next)
         return;
@@ -72,8 +81,10 @@ void ra(t_stack **stack_a)
 }
 
 // Rotate stack B (first element becomes last)
-void rb(t_stack **stack_b)
+void rb(t_stack **stack_b, int i)
 {
+    if (i == 0)
+        write(1, "rb\n", 3);
     t_node *temp, *last;
     if (!(*stack_b)->top || !(*stack_b)->top->next)
         return;
@@ -89,13 +100,16 @@ void rb(t_stack **stack_b)
 // Rotate both stacks A and B
 void rr(t_stack **stack_a, t_stack **stack_b)
 {
-    ra(stack_a);
-    rb(stack_b);
+    write(1, "rr\n", 3);
+    ra(stack_a, 1);
+    rb(stack_b, 1);
 }
 
 // Reverse rotate stack A (last element becomes first)
-void rra(t_stack **stack_a)
+void rra(t_stack **stack_a, int i)
 {
+    if (i == 0)
+        write(1, "rra\n", 4);
     t_node *prev, *last;
     if (!(*stack_a)->top || !(*stack_a)->top->next)
         return;
@@ -112,8 +126,10 @@ void rra(t_stack **stack_a)
 }
 
 // Reverse rotate stack B (last element becomes first)
-void rrb(t_stack **stack_b)
+void rrb(t_stack **stack_b, int i)
 {
+    if (i == 0)
+        write(1, "rrb\n", 4);
     t_node *prev, *last;
     if (!(*stack_b)->top || !(*stack_b)->top->next)
         return;
@@ -132,6 +148,7 @@ void rrb(t_stack **stack_b)
 // Reverse rotate both stacks A and B
 void rrr(t_stack **stack_a, t_stack **stack_b)
 {
-    rra(stack_a);
-    rrb(stack_b);
+    write(1, "rrr\n", 4);
+    rra(stack_a, 1);
+    rrb(stack_b, 1);
 }

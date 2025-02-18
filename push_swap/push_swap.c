@@ -1,30 +1,5 @@
 #include "push_swap.h"
 
-typedef struct s_node
-{
-    int value;
-    struct s_node *next;
-} t_node;
-
-typedef struct s_stack
-{
-    t_node *top;
-} t_stack;
-
-t_stack *init_stack(int argc, char **argv);
-int is_sorted(t_stack *stack);
-void sort_stack(t_stack **stack_a, t_stack **stack_b);
-void radix_sort(t_stack **stack_a, t_stack **stack_b);
-int stack_size(t_stack *stack);
-int find_max_value(t_stack *stack);
-void sort_two(t_stack **stack);
-void sort_three(t_stack **stack);
-void sort_five(t_stack **stack_a, t_stack **stack_b);
-void pb(t_stack **stack_a, t_stack **stack_b);
-void pa(t_stack **stack_a, t_stack **stack_b);
-void ra(t_stack **stack);
-void free_stack(t_stack **stack);
-
 int stack_size(t_stack *stack)
 {
     int size = 0;
@@ -53,7 +28,7 @@ int find_max_value(t_stack *stack)
 void sort_two(t_stack **stack)
 {
     if ((*stack)->top->value > (*stack)->top->next->value)
-        ra(stack);
+        ra(stack, 0);
 }
 
 void sort_three(t_stack **stack)
@@ -63,61 +38,21 @@ void sort_three(t_stack **stack)
     int c = (*stack)->top->next->next->value;
 
     if (a > b && b < c && a < c) // Cas: 2, 1, 3
-        sa(stack);
+        sa(stack, 0);
     else if (a > b && b > c) // Cas: 3, 2, 1
     {
-        sa(stack);
-        rra(stack);
+        sa(stack, 0);
+        rra(stack, 0);
     }
     else if (a > c && b < c) // Cas: 3, 1, 2
-        ra(stack);
+        ra(stack, 0);
     else if (a < c && b > c) // Cas: 1, 3, 2
     {
-        sa(stack);
-        ra(stack);
+        sa(stack, 0);
+        ra(stack, 0);
     }
     else if (a < b && a > c) // Cas: 2, 3, 1
-        rra(stack);
-}
-
-
-void pb(t_stack **stack_a, t_stack **stack_b)
-{
-    t_node *temp;
-    if (!(*stack_a)->top)
-        return;
-    temp = (*stack_a)->top;
-    (*stack_a)->top = temp->next;
-    temp->next = (*stack_b)->top;
-    (*stack_b)->top = temp;
-    write("pb\n", 3);
-}
-
-void pa(t_stack **stack_a, t_stack **stack_b)
-{
-    t_node *temp;
-    if (!(*stack_b)->top)
-        return;
-    temp = (*stack_b)->top;
-    (*stack_b)->top = temp->next;
-    temp->next = (*stack_a)->top;
-    (*stack_a)->top = temp;
-    write("pa\n", 3);
-}
-
-void ra(t_stack **stack)
-{
-    t_node *temp, *last;
-    if (!(*stack)->top || !(*stack)->top->next)
-        return;
-    temp = (*stack)->top;
-    (*stack)->top = temp->next;
-    temp->next = NULL;
-    last = (*stack)->top;
-    while (last->next)
-        last = last->next;
-    last->next = temp;
-    write("ra\n", 3);
+        rra(stack, 0);
 }
 
 void free_stack(t_stack **stack)
@@ -192,7 +127,7 @@ void radix_sort(t_stack **stack_a, t_stack **stack_b)
             if (((current->value >> i) & 1) == 0)
                 pb(stack_a, stack_b);
             else
-                ra(stack_a);
+                ra(stack_a, 0);
         }
         while (*stack_b)
             pa(stack_a, stack_b);

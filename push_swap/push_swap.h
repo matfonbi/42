@@ -32,7 +32,15 @@ void sort_five(t_stack **stack_a, t_stack **stack_b);
 // Stack manipulations
 void pb(t_stack **stack_a, t_stack **stack_b);
 void pa(t_stack **stack_a, t_stack **stack_b);
-void ra(t_stack **stack);
+void ra(t_stack **stack, int i);
+void sa(t_stack **stack_a, int i);
+void sb(t_stack **stack_b, int i);
+void ss(t_stack **stack_a, t_stack **stack_b);
+void rb(t_stack **stack_b, int i);
+void rr(t_stack **stack_a, t_stack **stack_b);
+void rra(t_stack **stack_a, int i);
+void rrb(t_stack **stack_b, int i);
+void rrr(t_stack **stack_a, t_stack **stack_b);
 
 // Utility functions
 void ft_putstr_fd(char *s, int fd);
