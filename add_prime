@@ -1,0 +1,67 @@
+#include <unistd.h>
+
+int ft_strlen(char *str)
+{
+    int i = 0;
+    while (str[i])
+    {
+        i++
+    }
+    return (i);
+}
+
+int ft_atoi(char *str)
+{
+    int num = 0;
+    int len = ft_strlen(str);
+    int i = len - 1;
+    while (i >= 0)
+    {
+        num = (str[i] - 48) + num * 10;
+        i--;
+    }
+}
+
+int Isprime(int num)
+{
+    int i = 2;
+    while (i < num / 2)
+    {
+        if (num % i == 0)
+            return (1);
+        else
+         i++;
+    }
+    return (0);
+}
+
+void ft_putnbr(int num)
+{
+    if (num < 9)
+        write(1, &num, 1);
+    else
+    {
+        ft_putnbr(num / 10);
+        j = num % 10;
+        write(1, &j, 1);
+    }
+}
+
+int main(int ac, char **av)
+{
+    int i = 2;
+    int add = 0;
+
+    if (ac == 2)
+    {
+        num = ft_atoi(av[1]);
+        while (i <= num)
+        {
+            if (Isprime(i))
+             add += i;
+            i++;
+        }
+    }
+    ft_putnbr(add);
+    return(0);
+}
