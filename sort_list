@@ -1,0 +1,26 @@
+#include "list.h"
+
+t_list *sort_list(t_list* lst, int (*cmp)(int, int))
+{
+    int min;
+    int temp;
+    t_list *lst2;
+    while (lst)
+    {
+        min = lst->data;
+        lst2 = lst->next;
+        while (lst2)
+        {
+            if (lst2->data < min)
+            {
+                temp = min;
+                min = lst2->data;
+                lst2->data = temp;
+            }
+            lst2 = lst2->next;
+        }
+        lst->data = min;
+        lst = lst->next;
+    }
+    return(lst);
+}
