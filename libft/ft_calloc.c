@@ -16,16 +16,18 @@
 
 static void	*ft_memalloc(size_t size)
 {
-	void	*new;
-	size_t	i;
+	void		*new;
+	size_t		i;
+	unsigned char	*ptr;
 
-	new = (void *) malloc(size);
+	new = (void *)malloc(size);
 	if (!new)
 		return (NULL);
+	ptr = (unsigned char *)new;
 	i = 0;
 	while (i < size)
 	{
-		*(unsigned char *)(new + i) = 0;
+		ptr[i] = 0;
 		i++;
 	}
 	return (new);
